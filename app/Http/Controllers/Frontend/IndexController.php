@@ -33,7 +33,10 @@ class IndexController extends Controller
         $post = Post::with(['user', 'category', 'media', 'comments' => function ($q) {
             $q->where('status', 1);
         }])->where('slug', $slug)->first();
-
+        if($post == null)
+        {
+            return redirect('/');
+        }
         return view('frontend.postdetails', compact('post'));
     }
 
