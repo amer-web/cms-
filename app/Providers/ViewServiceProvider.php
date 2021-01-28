@@ -89,7 +89,7 @@ class ViewServiceProvider extends ServiceProvider
                 }
                 if(!Cache::has('latest_comments')){
                  $latest_comments = Comment::where('status', 1)->orderBy('created_at', 'desc')->limit(5)->get();
-                 Cache::remember('$latest_comments', 3600, function () use ($latest_comments){
+                 Cache::remember('latest_comments', 3600, function () use ($latest_comments){
                     return  $latest_comments;
                  });
                 }
@@ -98,7 +98,7 @@ class ViewServiceProvider extends ServiceProvider
                 $categories = Cache::get('categories');
                 $latest_posts = Cache::get('latest_posts');
                 $pages = Cache::get('pages');
-                $latest_comments = Cache::get('$latest_comments');
+                $latest_comments = Cache::get('latest_comments');
 
                 $view->with([
                     'categories'=> $categories,

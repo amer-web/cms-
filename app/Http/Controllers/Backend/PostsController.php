@@ -191,7 +191,6 @@ class PostsController extends Controller
                 $dirfile = str_replace('/', '\\', public_path($images_deletes->file_name));
                 unlink($dirfile);
             }
-
             $dirfile =  dirname($dirfile);
             rmdir($dirfile);
         }

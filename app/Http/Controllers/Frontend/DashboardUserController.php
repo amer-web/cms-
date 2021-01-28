@@ -184,10 +184,13 @@ class DashboardUserController extends Controller
                 $dirfile = str_replace('/', '\\', public_path($images_deletes->file_name));
                 unlink($dirfile);
             }
-            $dirfile =  dirname($dirfile);
+            $dirfile = dirname($dirfile);
             rmdir($dirfile);
         }
+        $dashboard->comments()->delete();
         $dashboard->delete();
+        Cache::forget('latest_comments');
+        Cache::forget('latest_posts');
         return back()->with('success', 'the post has been deleted');
     }
 

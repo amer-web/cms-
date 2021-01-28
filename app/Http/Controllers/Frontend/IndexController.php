@@ -12,6 +12,7 @@ use App\Notifications\NewCommentForAdminNotify;
 use App\Notifications\NewCommentForOwnerPostNotify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
@@ -83,6 +84,7 @@ class IndexController extends Controller
             {
                 $admin->notify(new NewCommentForAdminNotify($comment));
             }
+            Cache::forget('latest_comments');
         return redirect()->back()->with('success', 'Comment Has Been Add');
     }
 
