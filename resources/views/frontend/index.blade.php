@@ -41,7 +41,7 @@
                             <ul class="post__meta">
                                 <li>Posts by : <a href="#">{{ $post->user->name }}</a>  / {{ $post->created_at->format('d-M-Y') }} <br> Category : <a href="">{{ $post->category->name }}</a></li>
                             </ul>
-                            <p>{{ $post->summary }}</p>
+                            <p>{{ Str::limit($post->summary, 144, '...')  }}</p>
                             <div class="blog__btn">
                                 <a href="{{ route('post.show', $post->slug) }}">read more</a>
                             </div>
