@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('Summary');
+            $table->text('summary');
             $table->longText('description');
             $table->unsignedTinyInteger('status')->default(0);
             $table->string('post_type')->default('post');

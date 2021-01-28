@@ -23,7 +23,7 @@ class PostsTableSeeder extends Seeder
         for ($i = 0; $i < 100; $i++) {
             Post::create([
                 'title' => $faker->sentence(3),
-                'Summary' => $faker->text(144),
+                'summary' => $faker->text(144),
                 'description' => $faker->paragraph,
                 'status' => rand(0, 1),
                 'comment_able' => rand(0, 1),
